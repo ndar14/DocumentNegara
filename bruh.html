@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DocumentRahasia</title>
+</head>
+<style>
+  body{
+    text-align:center;
+}
+  nav > button{
+    color: white;
+    background-color: red;
+    padding: 5px;
+    width: 65px;
+    height: 65px;
+    border-radius: 60px;
+    margin: 0 40px;
+}
+  nav > .ren{
+    color: white;
+    background-color: blue;
+    
+}
+  nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display:;
+  justify-content: center;
+  background-color: rgba(255,255,255,0.9);
+  padding: 10px 0;
+}
+</style>
+<body>
+    <h1>DOCUMENT RAHASIA PEMERINTAH</h1>
+  <nav>
+    <br>
+    <button class="rom" onclick="showOnce('t1',1,'sfx1')">ETANOL</button>
+    <button class="ren" onclick="showOnce('t2',2,'sfx2')">SAWIT</button>
+  </nav>
+     <div class="jgn">
+       <h1>JANGAN TEKAN!</h1>
+     </div>
+    <h3>by udzz&NickGurr</h3>
+
+  <template id="t1">
+  <h3>LIL ROM</h3>
+  <img src="lilRom.jpg" width="214" height="204">
+  </template>
+  <template id="t2">
+  <h3>WOKDI</h3>
+  <img src="Wokdi.jpg" width="214" height="204">
+  </template>
+  <audio id="sfx1" src="GETOUT.mp3"></audio>
+  <audio id="sfx2" src="antekAsing.mp3"></audio>
+<script>
+let lastClick = {
+  1: 0,
+  2: 0
+};
+
+function showOnce(idTemplate, idBtn, idSfx) {
+  const now = Date.now();
+  const cooldown = {
+    1: 1000,
+    2: 2000 
+    }
+  if (now - lastClick[idBtn] < cooldown[idBtn]) return;
+  lastClick[idBtn] = now;
+  let sound = document.getElementById(idSfx);
+  sound.currentTime = 0;
+  sound.play();
+  let temp = document.getElementById(idTemplate);
+  let clon = temp.content.cloneNode(true);
+  document.body.appendChild(clon);
+  window.scrollTo(0, document.body.scrollHeight);
+}
+</script>
+</body>
+</html>
